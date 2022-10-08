@@ -1,5 +1,6 @@
 import express from "express";
 import toDoModel from "../models/toDoModel.js";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
@@ -10,6 +11,22 @@ router.get("/", async (req, res) => {
     return res.status(200).json(todos);
   } catch (error) {
     return res.status(404).json({ message: error.message });
+  }
+});
+
+//get todo Item byID
+router.get("/getById/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const IsvalidID = mongoose.Types.ObjectId.isValid(id);
+    if (IsvalidID) {
+      const toDo = await toDoModel.findById(id);
+      return res.status(200).json(toDo);
+    } else {
+      return res.status(404).json("invalid todo id");
+    }
+  } catch (error) {
+    return res.status(500).json(error.message);
   }
 });
 
@@ -27,19 +44,24 @@ router.post("/", async (req, res) => {
 router.put("/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { toDo, finishDate, priority, status, subDoTo } = req.body;
-    const updatedToDo = await toDoModel.findByIdAndUpdate(
-      id,
-      {
-        toDo,
-        finishDate,
-        priority,
-        status,
-        subDoTo,
-      },
-      { new: true }
-    );
-    return res.status(200).json(updatedToDo);
+    const IsvalidID = mongoose.Types.ObjectId.isValid(id);
+    if (IsvalidID) {
+      const { toDo, finishDate, priority, status, subDoTo } = req.body;
+      const updatedToDo = await toDoModel.findByIdAndUpdate(
+        id,
+        {
+          toDo,
+          finishDate,
+          priority,
+          status,
+          subDoTo,
+        },
+        { new: true }
+      );
+      return res.status(200).json(updatedToDo);
+    } else {
+      return res.status(404).json("invalid todo id");
+    }
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -49,8 +71,13 @@ router.put("/update/:id", async (req, res) => {
 router.delete("/delete/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedTodo = await toDoModel.findByIdAndDelete(id);
-    return res.status(202).json(deletedTodo);
+    const IsvalidID = mongoose.Types.ObjectId.isValid(id);
+    if (IsvalidID) {
+      const deletedTodo = await toDoModel.findByIdAndDelete(id);
+      return res.status(202).json(deletedTodo);
+    } else {
+      return res.status(404).json("invalid todo id");
+    }
   } catch (error) {
     return res.status(500).json(error.message);
   }

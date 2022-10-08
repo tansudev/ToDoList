@@ -1,0 +1,22 @@
+TodoList table
+
+int İd;
+// int userId ;
+string toDo ;
+date date;
+date finishDate;
+object subMission;
+string priority;
+string statuses;   -incomplete/completed
+
+Submission table;
+int id;
+int toDoId;
+date bitiş finishDate;
+string priority;
+string statuses;   -incomplete/completed
+
+Database--
+username:Todo
+Password:todocluster321
+connectionstring:mongodb+srv://Todo:<password>@todolistcluster.kzblk0z.mongodb.net/?retryWrites=true&w=majority
