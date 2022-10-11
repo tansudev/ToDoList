@@ -5,8 +5,6 @@ import {
   todoListAction,
   removeFromToDoList,
 } from "../redux/action";
-import { todoListReducer } from "../redux/reducer";
-import Moment from "moment";
 
 //Mui
 import Box from "@mui/material/Box";
@@ -18,6 +16,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
 import CreateIcon from "@mui/icons-material/Create";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import dayjs from "dayjs";
+
+//componenet
+import UpdateToDo from "./todo-component/UpdateToDo";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -44,10 +46,10 @@ const TodoForm = () => {
     <>
       <Box
         sx={{
-          // marginRight: 30,
-          // marginLeft: 30,
-          margin: 10,
-          padding: 1,
+          marginRight: 10,
+          marginLeft: 10,
+          //margin: 10,
+
           alignItems: "center",
         }}
       >
@@ -58,20 +60,46 @@ const TodoForm = () => {
         <Card>
           <CardContent>
             <Grid container>
-              <Grid item xs={12}>
-                <Grid container alignItems="center" spacing={6}>
+              <Grid item xs={1}>
+                <Grid container alignItems="left" spacing={2}>
                   <Grid item xs zeroMinWidth>
-                    <h3>Başlıklar ekelenecek</h3>
+                    <h3>Mark</h3>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Grid
-                    container
-                    alignItems="center"
-                    justifyContent="space-between"
-                  ></Grid>
+              <Grid item xs={3}>
+                <Grid container alignItems="center" spacing={2}>
+                  <Grid item xs zeroMinWidth>
+                    <h3>Task</h3>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid container alignItems="center" spacing={2}>
+                  <Grid item xs zeroMinWidth>
+                    <h3>Finish Date</h3>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid container alignItems="center" spacing={2}>
+                  <Grid item xs zeroMinWidth>
+                    <h3>Priority</h3>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid container alignItems="center" spacing={2}>
+                  <Grid item xs zeroMinWidth>
+                    <h3>Status</h3>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid container alignItems="right" spacing={2}>
+                  <Grid item xs zeroMinWidth>
+                    <h3>Update/Delete</h3>
+                  </Grid>
                 </Grid>
               </Grid>
               {data.map((item) => (
@@ -93,14 +121,20 @@ const TodoForm = () => {
                             variant="rectangular"
                           />
                         </Grid>
-                        <Grid item xs={9}>
-                          {item.toDo} {item.finishDate} {item.priority}{" "}
+                        <Grid item xs={3} alignItems="center">
+                          {item.toDo}
+                        </Grid>
+                        <Grid item xs={2} alignItems="center">
+                          {dayjs(item.finishDate).format("MMM D, YYYY h:mm A")}
+                        </Grid>
+                        <Grid item xs={2}>
+                          {item.priority} {item.status}
+                        </Grid>
+                        <Grid item xs={2}>
                           {item.status}
                         </Grid>
                         <Grid item xs={1}>
-                          <IconButton aria-label="delete" size="medium">
-                            <CreateIcon />
-                          </IconButton>
+                          <UpdateToDo id={item._id} item={item}></UpdateToDo>
                         </Grid>
                         <Grid item xs={1}>
                           <IconButton

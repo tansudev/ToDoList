@@ -5,3 +5,7 @@ export const REMOVE_FROM_LIST_SAGA = "REMOVE_FROM_LIST_SAGA";
 export const EMPTY_TODO_LIST = "EMPTY_TODO_LIST";
 export const TODO_LIST = "TODO_LIST";
 export const TODO_LIST_SAGA = "TODO_LIST_SAGA";
+export const GET_BY_ID = "GET_BY_ID";
+export const GET_BY_ID_SAGA = "GET_BY_ID_SAGA";
+export const UPDATE_TO_LIST = "UPDATE_TO_LIST";
+export const UPDATE_TO_LIST_SAGA = "UPDATE_TO_LIST_SAGA";

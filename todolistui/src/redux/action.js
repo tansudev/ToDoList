@@ -3,6 +3,8 @@ import {
   EMPTY_TODO_LIST,
   REMOVE_FROM_LIST,
   TODO_LIST,
+  GET_BY_ID,
+  UPDATE_TO_LIST,
 } from "./constant";
 
 export const todoListAction = () => {
@@ -23,6 +25,17 @@ export const removeFromToDoList = (id) => {
     type: REMOVE_FROM_LIST,
     data: id,
   };
+};
+
+export const updateToDoList = (data) => {
+  return {
+    type: UPDATE_TO_LIST,
+    data: data,
+  };
+};
+
+export const getByIdFromToDoList = (id) => {
+  return { type: GET_BY_ID, data: id };
 };
 
 export const emptyToDoList = (id) => {

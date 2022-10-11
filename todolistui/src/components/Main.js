@@ -3,9 +3,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-
 //import component
 import TodoForm from "./TodoForm";
 import AddToDo from "./todo-component/AddToDo";
