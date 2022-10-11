@@ -24,7 +24,7 @@ const TodoForm = () => {
 
   useEffect(() => {
     getallData();
-  }, []);
+  }, [data]);
 
   //call all data
   const getallData = () => {

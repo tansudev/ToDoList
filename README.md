@@ -1,6 +1,23 @@
 # ToDoList
  ToDoList project developed with react.js and node.js
 
+# Start projects
+
+Client and Server project is in the same folder.
+
+### running server
+-open terminal and go in to server folder -> cd todolistserver
+
+-and run app ->npm start
+
+### running client
+
+-open terminal and go in to client folder -> cd todolistui
+
+-and run app ->npm start
+
+### now app is running localhost:3000 enjoy the list
+
  # Reference Resources
  -YouTube
  https://www.youtube.com/watch?v=SKJi-AyFtm8
