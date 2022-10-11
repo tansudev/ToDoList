@@ -1,1 +1,7 @@
-export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_TO_LIST = "ADD_TO_CART";
+export const ADD_TO_LIST_SAGA = "ADD_TO_LIST_SAGA";
+export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
+export const REMOVE_FROM_LIST_SAGA = "REMOVE_FROM_LIST_SAGA";
+export const EMPTY_TODO_LIST = "EMPTY_TODO_LIST";
+export const TODO_LIST = "TODO_LIST";
+export const TODO_LIST_SAGA = "TODO_LIST_SAGA";

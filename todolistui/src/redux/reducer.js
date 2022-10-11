@@ -1,10 +1,26 @@
-import { ADD_TO_CART } from "./constant";
+import {
+  ADD_TO_LIST_SAGA,
+  EMPTY_TODO_LIST,
+  REMOVE_FROM_LIST_SAGA,
+  TODO_LIST_SAGA,
+} from "./constant";
 
-export const todoList = (data = [], action) => {
-  if (action.type === ADD_TO_CART) {
-    console.warn("ADD_TO_CART called", action);
-  } else {
-    return data;
+export const todoListReducer = (data = [], action) => {
+  switch (action.type) {
+    case TODO_LIST_SAGA:
+      // console.warn("TODO_LIST", action);
+      return [...action.data];
+    case ADD_TO_LIST_SAGA:
+      // console.warn("ADD_TO_CART called", action);
+      return [...data, action.data];
+    case REMOVE_FROM_LIST_SAGA:
+      console.warn("REMOVE_FROM_LIST_SAGA called", action);
+      return [...data];
+    case EMPTY_TODO_LIST:
+      console.warn("EMPTY_TODO_LIST called", action);
+      data = [];
+      return [...data];
+    default:
+      return data;
   }
-  return 100;
 };
