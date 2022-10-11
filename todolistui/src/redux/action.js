@@ -3,7 +3,7 @@ import {
   EMPTY_TODO_LIST,
   REMOVE_FROM_LIST,
   TODO_LIST,
-  GET_BY_ID,
+  // GET_BY_ID,
   UPDATE_TO_LIST,
 } from "./constant";
 
@@ -34,9 +34,9 @@ export const updateToDoList = (data) => {
   };
 };
 
-export const getByIdFromToDoList = (id) => {
-  return { type: GET_BY_ID, data: id };
-};
+// export const getByIdFromToDoList = (id) => {
+//   return { type: GET_BY_ID, data: id };
+// };
 
 export const emptyToDoList = (id) => {
   console.warn("action is delete all items");

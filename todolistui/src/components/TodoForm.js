@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToDoList,
-  todoListAction,
-  removeFromToDoList,
-} from "../redux/action";
+import { todoListAction, removeFromToDoList } from "../redux/action";
 
 //Mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
-import { Card, CardContent, Grid, Stack } from "@mui/material";
+import { Card, CardContent, Grid } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
-import CreateIcon from "@mui/icons-material/Create";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import dayjs from "dayjs";
 
@@ -26,7 +21,6 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const TodoForm = () => {
   const dispatch = useDispatch();
   let data = useSelector((state) => state.todoListReducer);
-  const [formatdate, setFormatDate] = useState("00-00-0000");
 
   useEffect(() => {
     getallData();
@@ -119,6 +113,7 @@ const TodoForm = () => {
                             icon={<BookmarkBorderIcon />}
                             checkedIcon={<BookmarkIcon />}
                             variant="rectangular"
+                            checked={item.status === "Completed" ? true : false}
                           />
                         </Grid>
                         <Grid item xs={3} alignItems="center">
@@ -128,7 +123,7 @@ const TodoForm = () => {
                           {dayjs(item.finishDate).format("MMM D, YYYY h:mm A")}
                         </Grid>
                         <Grid item xs={2}>
-                          {item.priority} {item.status}
+                          {item.priority}
                         </Grid>
                         <Grid item xs={2}>
                           {item.status}

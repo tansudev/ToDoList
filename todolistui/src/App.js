@@ -1,5 +1,3 @@
-import { addToDoList } from "./redux/action";
-import { useDispatch } from "react-redux";
 import "./App.css";
 
 //import component
